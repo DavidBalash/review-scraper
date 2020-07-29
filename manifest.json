@@ -1,0 +1,36 @@
+{
+  "name": "Review scraper",
+  "description": "Scraper for Chrome webstore reviews.",
+  "version": "1.1",
+  "manifest_version": 2,
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "https://chrome.google.com/webstore/detail/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chrome.google.com/webstore/detail/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "images/scraper48.png",
+    "default_popup": "popup.html",
+    "default_title": "Review scraper"
+  },
+  "icons": {
+    "16": "images/scraper16.png",
+    "48": "images/scraper48.png",
+    "128": "images/scraper128.png"
+  }
+}
