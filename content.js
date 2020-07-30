@@ -11,9 +11,8 @@ document.querySelectorAll('.ba-pa').forEach(function(node) {
         });
         
         let review = node.getElementsByClassName("ba-Eb-ba")[0].innerText
-            .replace('"', '')
-            .replace("'", "")
-            .replace('\n', ' ');
+            .replace(/["']/g, '')
+            .replace(/(?:\r\n|\r|\n)/g, ' ');
 
         reviewsData = reviewsData + '\n{"date": "' + date
             + '", "name": "' + name
@@ -22,5 +21,3 @@ document.querySelectorAll('.ba-pa').forEach(function(node) {
 });
 
 browser.runtime.sendMessage({type: "set_reviews", reviews: reviewsData});
-
-document.querySelectorAll('.Aa.dc-se').forEach(function(node) {node.click();});
